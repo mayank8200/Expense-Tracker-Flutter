@@ -45,16 +45,27 @@ class MyHomePage extends StatelessWidget {
                     child: Row(
                       children: [
                         Container(
+                          margin: EdgeInsets.all(25),
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.purple,
+                              width: 3,
+                            ),
+                          ),
                           child: Text(
                             tx.amount.toString(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18),
                           ),
                         ),
-                        Column(
-                          children: [
-                            Text(tx.title),
-                            Text(tx.date.toString())
-                          ],
-                        )
+                       Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(tx.title,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+                              Text(tx.date.toString(),style: TextStyle(color:Colors.grey),),
+                            ],
+                          ),
                       ],
                     ),
                   );
