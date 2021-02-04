@@ -7,44 +7,47 @@ class TransactionList extends StatelessWidget {
   TransactionList(this.userTransactions);
   @override
   Widget build(BuildContext context) {
-    return Column(
-                children: userTransactions.map((tx) {
-                  return Card(
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.all(25),
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.purple,
-                              width: 3,
-                            ),
-                          ),
-                          child: Text(
-                            '₹ ${tx.amount}',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
+    return Container(
+        height: 500,
+        child: ListView.builder(
+            itemBuilder: (ctx, index) {
+              return Card(
+                child: Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(15),
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.purple,
+                          width: 3,
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              tx.title,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 18),
-                            ),
-                            Text(
-                              DateFormat.yMMMEd().format(tx.date),
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                          ],
+                      ),
+                      child: Text(
+                        '₹ ${userTransactions[index].amount}',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18),
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          userTransactions[index].title,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
+                        ),
+                        Text(
+                          DateFormat.yMMMEd()
+                              .format(userTransactions[index].date),
+                          style: TextStyle(color: Colors.grey),
                         ),
                       ],
                     ),
-                  );
-                }).toList(),
+                  ],
+                ),
               );
-        }
+            },
+            itemCount: userTransactions.length));
+  }
 }
