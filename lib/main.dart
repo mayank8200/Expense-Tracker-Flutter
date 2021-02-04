@@ -14,6 +14,9 @@ class MyHomePage extends StatelessWidget {
       home: Scaffold(
           appBar: AppBar(
             title: Text('Expense Tracker'),
+            actions: [
+              IconButton(icon: Icon(Icons.add), onPressed: (){})
+            ],
           ),
           body: SingleChildScrollView(
                       child: Column(
@@ -33,7 +36,10 @@ class MyHomePage extends StatelessWidget {
                 UserTransactions()
               ],
             ),
-          )),
+          ),
+          floatingActionButton: FloatingActionButton(child: Icon(Icons.add),),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+          ),
     );
   }
 }
