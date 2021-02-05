@@ -49,7 +49,7 @@ class _NewTransactionState extends State<NewTransaction> {
                           child: Text(
                             "Add Transaction",
                             style:
-                                TextStyle(color: Colors.purple, fontSize: 15),
+                                TextStyle(color: Theme.of(context).primaryColor, fontSize: 15),
                           ))
                     ],
                   ),

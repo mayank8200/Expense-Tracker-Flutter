@@ -10,7 +10,11 @@ void main(List<String> args) {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: "Flutter", home: MyHomePage());
+    return MaterialApp(
+      title: "Expense Tracker", 
+     
+      home: MyHomePage()
+      );
   }
 }
 
@@ -60,9 +64,31 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+       theme: ThemeData(
+        primarySwatch: Colors.green,
+        fontFamily: "OpenSans",
+        textTheme: ThemeData.light().textTheme.copyWith(
+            headline6: TextStyle(
+              fontFamily: "OpenSans",
+              fontSize: 18,
+              fontWeight: FontWeight.bold
+              )
+        ),
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+            headline6: TextStyle(
+              fontFamily: "OpenSans",
+              fontSize: 20,
+              fontWeight: FontWeight.bold
+              )
+          )
+        )
+        //accentColor: Colors.green
+      ),
       home: Scaffold(
         appBar: AppBar(
           title: Text('Expense Tracker'),
+          //backgroundColor: Theme.of(context).primaryColor,
           actions: [
             IconButton(
                 icon: Icon(Icons.add),
@@ -81,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     "Charts",
                   ),
                   elevation: 5,
-                  color: Colors.cyan,
+                  //color: Theme.of(context).primaryColor,
                 ),
               ),
               TransactionList(transactions)
@@ -90,6 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
+          //backgroundColor: Theme.of(context).primaryColor,
           onPressed: () => addNewTransactionModel(context),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

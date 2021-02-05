@@ -19,14 +19,14 @@ class TransactionList extends StatelessWidget {
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Colors.purple,
+                          color: Theme.of(context).primaryColor,
                           width: 3,
                         ),
                       ),
                       child: Text(
                         '₹ ${userTransactions[index].amount.toStringAsFixed(2)}',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
+                            fontWeight: FontWeight.bold, fontSize: 18,color: Theme.of(context).primaryColor),
                       ),
                     ),
                     Column(
@@ -34,8 +34,7 @@ class TransactionList extends StatelessWidget {
                       children: [
                         Text(
                           userTransactions[index].title,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
+                          style: Theme.of(context).textTheme.headline6,
                         ),
                         Text(
                           DateFormat.yMMMEd()
