@@ -1,8 +1,8 @@
-import 'package:expense_tracker/widgets/tx_List.dart';
-
+import './widgets/charts.dart';
 import './widgets/new_transactions.dart';
 import './models/transaction.dart';
 import 'package:flutter/material.dart';
+import './widgets/tx_List.dart';
 
 void main(List<String> args) {
   runApp(MyApp());
@@ -25,17 +25,25 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transactions> transactions = [
-    Transactions(
-        id: "t1",
-        title: "New Boult Airpods",
-        amount: 1600,
-        date: DateTime.now()),
-    Transactions(
-        id: "t2",
-        title: "New CryptoCurrency",
-        amount: 1100,
-        date: DateTime.now())
+    // Transactions(
+    //     id: "t1",
+    //     title: "New Boult Airpods",
+    //     amount: 1600,
+    //     date: DateTime.now()),
+    // Transactions(
+    //     id: "t2",
+    //     title: "New CryptoCurrency",
+    //     amount: 1100,
+    //     date: DateTime.now())
   ];
+ List<Transactions> get recentTransactions{
+   return transactions.where((tx) {
+     return tx.date.isAfter(
+       DateTime.now().subtract(Duration(days: 7))
+     );
+   }).toList();
+ }
+
   void addTransaction(String txTitle, double txAmount) {
     final newTx = Transactions(
       id: DateTime.now().toString(),
@@ -100,16 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
             //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                width: double.infinity,
-                child: Card(
-                  child: Text(
-                    "Charts",
-                  ),
-                  elevation: 5,
-                  //color: Theme.of(context).primaryColor,
-                ),
-              ),
+             Charts(recentTransactions),
               TransactionList(transactions)
             ],
           ),
