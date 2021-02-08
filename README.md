@@ -32,10 +32,14 @@ Technologies,Languages and Tools Involved:-<br><br>
 
 ## Working Of App(GIF)
 <br>
+
 ### Adding Transaction Feature
+
 <img src="https://i.imgur.com/TcSggcV.gif" width="400" height="700" />
 <br>
+
 ### Deleting Transaction Feature
+
 <img src="https://i.imgur.com/zudf0vY.gif" width="400" height="700" />
 
 
