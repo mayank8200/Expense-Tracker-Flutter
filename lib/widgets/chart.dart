@@ -5,7 +5,7 @@ import './chart_bar.dart';
 import '../models/transaction.dart';
 
 class Chart extends StatelessWidget {
-  final List<Transactions> recentTransactions;
+  final List<Transaction> recentTransactions;
 
   Chart(this.recentTransactions);
 
@@ -28,7 +28,7 @@ class Chart extends StatelessWidget {
         'day': DateFormat.E().format(weekDay).substring(0, 1),
         'amount': totalSum,
       };
-    });
+    }).reversed.toList();
   }
 
   double get totalSpending {
