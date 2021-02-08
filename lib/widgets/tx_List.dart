@@ -3,7 +3,7 @@ import '../models/transaction.dart';
 import 'package:intl/intl.dart';
 
 class TransactionList extends StatelessWidget {
-  final List<Transactions> userTransactions;
+  final List<Transaction> userTransactions;
   TransactionList(this.userTransactions);
   @override
   Widget build(BuildContext context) {
