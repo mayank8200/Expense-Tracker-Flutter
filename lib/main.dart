@@ -62,6 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //   date: DateTime.now(),
     // ),
   ];
+  bool showChart = true;
 
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((tx) {
@@ -126,12 +127,24 @@ class _MyHomePageState extends State<MyHomePage> {
           // mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-              height: (MediaQuery.of(context).size.height-appBar.preferredSize.height-MediaQuery.of(context).padding.top)*0.4,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Show Chart"),
+                Switch(value: showChart, onChanged: (val){
+              setState(() {
+                showChart=val;
+              });
+            }),
+              ],
+            ),
+            
+            showChart?Container(
+              height: (MediaQuery.of(context).size.height-appBar.preferredSize.height-MediaQuery.of(context).padding.top)*0.7,
               child: Chart(_recentTransactions),
-              ),
+              ):
             Container(
-              height: (MediaQuery.of(context).size.height-appBar.preferredSize.height-MediaQuery.of(context).padding.top)*0.6,
+              height: (MediaQuery.of(context).size.height-appBar.preferredSize.height-MediaQuery.of(context).padding.top)*1,
               child: TransactionList(_userTransactions, _deleteTransaction),
               ),
           ],
