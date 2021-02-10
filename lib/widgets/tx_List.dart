@@ -8,7 +8,7 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 400,
+        //height: 400,
         child: userTransactions.isEmpty ? Column(
           children: [
             Text("No transactions found!!!",style:Theme.of(context).textTheme.headline6),
